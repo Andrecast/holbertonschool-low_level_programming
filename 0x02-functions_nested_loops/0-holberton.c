@@ -2,7 +2,7 @@
 
 /**
 *main - main funtion
-*
+*@c: var
 *_putchar - Entry point
 *
 *Return: Always 0 (Sucess)
