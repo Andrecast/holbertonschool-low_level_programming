@@ -10,9 +10,9 @@ void print_rev(char *s)
 {
 	int p = 0;
 
-for (p = _strlen(s); p > 0; --p)
+for (p = _strlen(s); p > 0; --p) /*con p va a ir recorriendo s en reversa*/
 {
-	_putchar(s[p]);
+	_putchar(s[p - 1]); /* Imprime s desde p-1 para evitar imprimir el nulo*/
 }
 _putchar ('\n');
 }
