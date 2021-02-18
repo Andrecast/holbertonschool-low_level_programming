@@ -13,7 +13,7 @@ void rev_string(char *s)
 	{
 		v[a] = s[a];
 	}
-	a--;
+	a--; /* para que no lea el valor nulo*/
 	for (b = 0; a >= 0; a--)
 	{
 		s[b] = v[a];
