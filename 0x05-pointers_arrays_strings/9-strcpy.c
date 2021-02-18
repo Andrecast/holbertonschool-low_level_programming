@@ -1,10 +1,10 @@
 #include "holberton.h"
 #include <stdio.h>
 /**
- * *_strcpy - function that copies and paste a string
+ * _strcpy - function that copies and paste a string
  * @dest: string de destino
  * @src: string de orien
- * return: dest
+ * Return: dest
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -17,3 +17,4 @@ char *_strcpy(char *dest, char *src)
 	dest[b] = '\0';
 	return (dest);
 }
+
