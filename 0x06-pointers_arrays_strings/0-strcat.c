@@ -3,7 +3,7 @@
  * _strcat - function that concatenate two strings
  * @dest: array of destiny
  * @src: string to add
- * Return: suma
+ * Return: dest
  */
 char *_strcat(char *dest, char *src)
 {
