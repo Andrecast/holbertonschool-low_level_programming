@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * _strcat - function that concatenate two strings
- * @dest: array of destiny
+ * @dest: string of destiny
  * @src: string to add
  * Return: dest
  */
