@@ -4,7 +4,7 @@
  * @dest: array of destiny
  * @src: string to add
  * @n: number of bytes
- * Return: suma
+ * Return: dest
  */
 char *_strncat(char *dest, char *src, int n)
 {
