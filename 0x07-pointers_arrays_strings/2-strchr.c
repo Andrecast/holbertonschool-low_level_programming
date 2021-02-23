@@ -9,13 +9,13 @@
 
 char *_strchr(char *s, char c)
 {
-	int i = 0;
+	int a = 0;
 
-	for (; s[i] != '\0'; i++)/*recorre el string, antes del nulo*/
+	for (; s[a] != '\0'; a++)/*recorre el string, antes del nulo*/
 	{
-		if (s[i] == c)
+		if (s[a] == c)
 		{
-			return (&s[i]);/*retorna el puntero, cuando encuentra c*/
+			return (&s[a]);/*retorna el puntero, cuando encuentra c*/
 		}
 	}
 	return ('\0');/* retorna NULL si no encuentra la c*/
