@@ -3,25 +3,22 @@
 
 /**
  *_strchr - function that locates a character in a string
- *@s: string
+ *@s: string, pointer
  *@c: character to find
- *Return: t
+ *Return: t or NULL
  */
 
 char *_strchr(char *s, char c)
 {
-	int a = 0, b;
-	char *t = NULL;
+	while (s != c && s != 00)
+		s++;
 
-	while (s[a] != '\0')
-		a++;
-	for (b = 0; b <= a; b++)
+	if (s == c)
 	{
-		if (s[b] == c)
-		{
-			t = s + b;
-			break;
-		}
+		return (s);
 	}
-	return (t);
+	else
+	{
+		return (0);
+	}
 }
