@@ -15,7 +15,7 @@ char *_strchr(char *s, char c)
 	{
 		if (s[i] == c)
 		{
-			return (s);/*retorna el puntero, cuando encuentra c*/
+			return (&s[i]);/*retorna el puntero, cuando encuentra c*/
 		}
 	}
 	return ('\0');/* retorna NULL si no encuentra la c*/
