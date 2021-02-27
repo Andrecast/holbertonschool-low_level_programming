@@ -1,14 +1,13 @@
 #include <stdio.h>
 /**
-*
-*
-*
+* main - principal function
+* @argc: argument count
+* @argv: argument vector
+* Return: 0
 */
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	while ((argc = 0))
-	{
-		printf("%s \n", argv[0]);
-	}
-	return 0;
+	for (int i = 0; i < argc; i++)
+	printf("%s \n", argv[i]);
+	return (0);
 }
