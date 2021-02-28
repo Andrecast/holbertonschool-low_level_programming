@@ -7,12 +7,7 @@
 */
 int main(int argc, char *argv[])
 {
-	int j;
-
-	for (j = 0; j < argc; j++)
-	{
-		(void)argv;
-	}
-	printf("%d \n", j - 1);
+	printf("%d \n", argc - 1);
+	(void)argv;
 	return (0);
 }
