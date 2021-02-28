@@ -23,6 +23,6 @@ char *cap_string(char *str)
 				str[a + 1] = str[a + 1] - 32;
 			}
 	}
-}
+	}
 	return (str);
 }

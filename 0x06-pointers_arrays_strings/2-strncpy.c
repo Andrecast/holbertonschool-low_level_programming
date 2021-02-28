@@ -7,7 +7,7 @@
  * Return: dest
  */
 char *_strncpy(char *dest, char *src, int n)
-{
+{/*n ya está definido desde la funcion main*/
 	int len;
 
 	for (len = 0; len < n && src[len] != '\0'; len++)
