@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 /**
 * main - program that prints all arguments it receives
 * @argc: argument count
@@ -17,10 +18,15 @@ int main(int argc, char *argv[])
 	}
 	for (i = 1; i < argc; i++)
 	{
-		if (*argv[i] < '0' || *argv[i] > '9')
+		int a;
+
+		for (a = 0; argv[i][a] != '\0'; a++)  /*recorre el string*/
 		{
+			if (!isdigit(argv[i][a]))
+			{
 			printf("Error\n");
 			return (1);
+			}
 		}
 		sum += atoi(argv[i]);
 	}
