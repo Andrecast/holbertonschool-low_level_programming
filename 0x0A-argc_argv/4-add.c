@@ -16,13 +16,13 @@ int main(int argc, char *argv[])
 		printf("0\n");
 		return (0);
 	}
-	for (i = 1; i < argc; i++)
+	for (i = 1; i < argc; i++) /* recorre el array */
 	{
 		int a;
 
-		for (a = 0; argv[i][a] != '\0'; a++)  /*recorre el string*/
+		for (a = 0; argv[i][a] != '\0'; a++)  /*recorre cada string del array*/
 		{
-			if (!isdigit(argv[i][a]))
+			if (!isdigit(argv[i][a]))/*valida si en algun string hay una letra*/
 			{
 			printf("Error\n");
 			return (1);
