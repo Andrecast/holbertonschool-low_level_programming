@@ -24,6 +24,7 @@ char *_strdup(char *str)
 		return (NULL);
 
 	for (j = 0; j <= i; j++)/*es la forma de copiar un string en otro*/
+	/*en j <= i, con el = me imprime también el nulo*/
 		copy[j] = str[j];
 
 	return (copy);
