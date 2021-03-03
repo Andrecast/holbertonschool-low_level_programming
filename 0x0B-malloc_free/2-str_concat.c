@@ -12,6 +12,11 @@ char *str_concat(char *s1, char *s2)
 	char *completa;
 	int lens1 = 0, lens2 = 0, i;
 
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+		
 	while (s1[lens1] != '\0')
 		lens1++;
 
@@ -22,11 +27,6 @@ char *str_concat(char *s1, char *s2)
 
 	if (completa == NULL)
 		return (NULL);
-
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
 
 	for (i = 0; i < lens1; i++)/*primero se llena con s1*/
 		completa[i] = s1[i];
