@@ -12,11 +12,10 @@ void print_dog(struct dog *d)
 		{
 			d->name = "(nil)";
 		}
-		/* with float not necessary, warning of incompatible types */
-		/*if (d->owner == NULL)
+		if (d->owner == NULL)
 		{
 			d->owner = "(nil)";
-		}*/
+		}
 		if (d->age < 0)
 		{
 			printf("Age: (nil)\n");
