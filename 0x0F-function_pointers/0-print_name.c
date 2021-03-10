@@ -7,7 +7,8 @@
  * Return: 0
  */
 void print_name(char *name, void (*f)(char *))
+/*f es un puntero a las dos funciones en 0-main.c*/
 {
 	if (f != NULL && name != NULL)
-	f(name);
+	f(name);/*imprima la variable name de ambas funciones*/
 }
