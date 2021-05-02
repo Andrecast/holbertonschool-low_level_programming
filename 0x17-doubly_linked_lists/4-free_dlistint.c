@@ -8,7 +8,7 @@
 void free_dlistint(dlistint_t *head)
 {
 	if (head == NULL)/*si el doble puntero es NULL, no hay nada*/
-		return (NULL);
+		return;
 	while (head->next)
 	{
 		head = head->next;
