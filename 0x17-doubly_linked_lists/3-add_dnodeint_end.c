@@ -8,7 +8,7 @@
  */
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
-	dlistint_t *new, *tmp = NULL;
+	dlistint_t *new;
 
 	if (head == NULL)/*si el doble puntero es NULL, no hay nada*/
 		return (NULL);
@@ -18,17 +18,22 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 
 	new->next = NULL;/*le asigno NULL porq va a ser el último nodo*/
 	new->n = n;/*le asigno el número que va a llevar*/
-
-	while (tmp->next != NULL)/*si es igual a NULL, ahí pierdo de vista la lista*/
-		tmp = tmp->next;/*avance a traves de los nodos*/
-	/*Ahora uno los nodos en ambos sentidos*/
-	tmp->next = new;
-	new->prev = tmp;
-
-	/*Mientras la lista no esté vacía*/
-	if (*head != NULL)
+	/*si la lista está vacía, simplemente añada new node*/
+	if (*head == NULL)
 	{
-		new->prev = *head;
+		*head = new;
+		new->prev = NULL;
+		return (new);
 	}
+	/*El nuevo nodo lo voy apuntando a cada nodo (desde el head)*/
+	/* hasta que llegue a apuntar al último*/
+	new->prev = *head;
+	/*new->prev->next se refiere al next del nodo anterior*/
+	while (new->prev->next)
+	{
+		new->prev = new->prev->next;
+	}
+	/*el next del último nodo ya no apunta a NULL sino a new*/
+	new->prev->next = new;
 	return (new);
 }
