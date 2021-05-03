@@ -9,15 +9,17 @@
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
 	dlistint_t *p_node;
-	unsigned int i;
+	unsigned int i = 0;
 
 	if (head == NULL)/*si el doble puntero es NULL, no hay nada*/
 		return (NULL);
 	p_node = head;
-	for (i = 0; i < index; i++)
+	while (p_node)
 	{
-		p_node = p_node->next;/*así se recorren los nodos*/
-		/*el puntero p_node va a ir apuntando a cada nodo hasta llegar al index*/
+		if (i == index)
+			return (p_node);
+		i++;
+		p_node = p_node->next;
 	}
-	return (p_node);/*retorna el nodo al que está apuntando*/
+	return (NULL);
 }
