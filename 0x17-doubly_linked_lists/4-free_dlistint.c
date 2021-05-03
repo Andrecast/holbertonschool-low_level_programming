@@ -11,8 +11,8 @@ void free_dlistint(dlistint_t *head)
 		return;
 	while (head->next)
 	{
-		head = head->next;
-		free(head->prev);
+		head = head->next;/*head ahora apunta al siguiente nodo*/
+		free(head->prev);/*y se elimina el nodo anterior*/
 	}
-	free(head);
+	free(head);/*cuando queda solo un nodo, lo elimina*/
 }
