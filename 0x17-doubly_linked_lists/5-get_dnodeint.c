@@ -8,11 +8,12 @@
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	dlistint_t *p_node = head;
+	dlistint_t *p_node;
 	unsigned int i;
 
 	if (head == NULL)/*si el doble puntero es NULL, no hay nada*/
 		return (NULL);
+	p_node = head;
 	for (i = 0; i < index; i++)
 	{
 		p_node = p_node->next;/*así se recorren los nodos*/
