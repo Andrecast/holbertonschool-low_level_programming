@@ -22,6 +22,7 @@ At the end of this project, you are expected to be able to  [explain to anyone](
 -   What does a function pointer exactly hold
 -   Where does a function pointer point to in the virtual memory
 
+
 ## Quiz questions
 
 Hide
@@ -34,7 +35,7 @@ Which one is a pointer to a function?
     
 -   int *func(int a, float b);
     
--   int (*func)(int a, float b);
+x   int (*func)(int a, float b);
     
 -   (int *)func(int a, float b);
     
@@ -50,9 +51,9 @@ void neyo(void);
 
 to the variable  `f`  of type pointer to a function that does not take any argument and does not return anything, you would do (check all correct answers if there is more than one):
 
--   f = neyo;
+x   f = neyo;
     
--   f = &neyo;
+x   f = &neyo;
     
 -   *f = neyo;
     
@@ -63,9 +64,9 @@ to the variable  `f`  of type pointer to a function that does not take any argum
 
 If  `f`  is a pointer to a function that takes no parameter and returns an  `int`, you can call the function pointed by  `f`  this way (check all correct answers if there is more than one):
 
--   f();
+x   f();
     
--   (*f)();
+x   (*f)();
     
 -   f;
     
@@ -80,7 +81,7 @@ This  `void (*anjula[])(int, float)`  is:
     
 -   A pointer to a function that takes an  `int`  and a  `float`  as parameters and returns an empty array
     
--   An array of pointers to functions that take an  `int`  and a  `float`  as parameters and returns nothing
+x   An array of pointers to functions that take an  `int`  and a  `float`  as parameters and returns nothing
     
 -   A pointer to an array of functions that take an  `int`  and a  `float`  as parameters and returns nothing
     
@@ -91,11 +92,11 @@ What does a pointer to a function point to (check all correct answers if there i
 
 -   data
     
--   code
+x   code
     
 -   The first character of the name of the function
     
--   The first byte of code of the function
+x   The first byte of code of the function
     
 
 ## Tasks
@@ -104,13 +105,87 @@ What does a pointer to a function point to (check all correct answers if there i
 
 mandatory
 
+Score:  100.00%  (Checks completed: 100.00%)
+
 Write a function that prints a name.
 
--   Prototype:  `void print_name(char *name, void (*f)(char *));
+-   Prototype:  `void print_name(char *name, void (*f)(char *));`
+
+```
+julien@ubuntu:~/0x0e. Function pointers$ cat 0-main.c
+#include <stdio.h>
+#include "function_pointers.h"
+
+/**
+ * print_name_as_is - prints a name as is
+ * @name: name of the person
+ *
+ * Return: Nothing.
+ */
+void print_name_as_is(char *name)
+{
+    printf("Hello, my name is %s\n", name);
+}
+
+/**
+ * print_name_uppercase - print a name in uppercase
+ * @name: name of the person
+ *
+ * Return: Nothing.
+ */
+void print_name_uppercase(char *name)
+{
+    unsigned int i;
+
+    printf("Hello, my uppercase name is ");
+    i = 0;
+    while (name[i])
+    {
+        if (name[i] >= 'a' && name[i] <= 'z')
+        {
+            putchar(name[i] + 'A' - 'a');
+        }
+        else
+        {
+            putchar(name[i]);
+        }
+        i++;
+    }
+}
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_name("Bob", print_name_as_is);
+    print_name("Bob Dylan", print_name_uppercase);
+    printf("\n");
+    return (0);
+}
+julien@ubuntu:~/0x0e. Function pointers$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 0-main.c 0-print_name.c -o a
+julien@ubuntu:~/0x0e. Function pointers$ ./a 
+Hello, my name is Bob
+Hello, my uppercase name is BOB DYLAN
+julien@ubuntu:~/0x0e. Function pointers$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x0F-function_pointers`
+-   File:  `0-print_name.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
 
 ### 1. If you spend too much time thinking about a thing, you'll never get it done
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that executes a function given as a parameter on each element of an array.
 
@@ -118,9 +193,75 @@ Write a function that executes a function given as a parameter on each element o
 -   where  `size`  is the size of the array
 -   and  `action`  is a pointer to the function you need to use
 
+```
+julien@ubuntu:~/0x0e. Function pointers$ cat 1-main.c
+#include <stdio.h>
+#include "function_pointers.h"
+
+/**
+ * print_elem - prints an integer
+ * @elem: the integer to print
+ *
+ * Return: Nothing.
+ */
+void print_elem(int elem)
+{
+    printf("%d\n", elem);
+}
+
+/**
+ * print_elem_hex - prints an integer, in hexadecimal
+ * @elem: the integer to print
+ *
+ * Return: Nothing.
+ */
+void print_elem_hex(int elem)
+{
+    printf("0x%x\n", elem);
+}
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int array[5] = {0, 98, 402, 1024, 4096};
+
+    array_iterator(array, 5, &print_elem);
+    array_iterator(array, 5, &print_elem_hex);
+    return (0);
+}
+julien@ubuntu:~/0x0e. Function pointers$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-main.c 1-array_iterator.c -o b
+julien@ubuntu:~/0x0e. Function pointers$ ./b 
+0
+98
+402
+1024
+4096
+0x0
+0x62
+0x192
+0x400
+0x1000
+julien@ubuntu:~//0x0e. Function pointers$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x0F-function_pointers`
+-   File:  `1-array_iterator.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 2. To hell with circumstances; I create opportunities
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that searches for an integer.
 
@@ -131,9 +272,85 @@ Write a function that searches for an integer.
 -   If no element matches, return  `-1`
 -   If size <=  `0`, return  `-1`
 
+```
+julien@ubuntu:~/0x0e. Function pointers$ cat 2-main.c
+#include <stdio.h>
+#include "function_pointers.h"
+
+/**
+ * is_98 - check if a number is equal to 98
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int is_98(int elem)
+{
+    return (98 == elem);
+}
+
+/**
+ * is_strictly_positive - check if a number is greater than 0
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int is_strictly_positive(int elem)
+{
+    return (elem > 0);
+}
+
+
+/**
+ * abs_is_98 - check if the absolute value of a number is 98
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int abs_is_98(int elem)
+{
+    return (elem == 98 || -elem == 98);
+}
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 98};
+    int index;
+
+    index = int_index(array, 20, is_98);
+    printf("%d\n", index);
+    index = int_index(array, 20, abs_is_98);
+    printf("%d\n", index);
+    index = int_index(array, 20, is_strictly_positive);
+    printf("%d\n", index);
+    return (0);
+}
+julien@ubuntu:~/0x0e. Function pointers$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-int_index.c -o c
+julien@ubuntu:~/0x0e. Function pointers$ ./c 
+2
+1
+2
+julien@ubuntu:~/0x0e. Function pointers$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x0F-function_pointers`
+-   File:  `2-int_index.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 3. A goal is not always meant to be reached, it often serves simply as something to aim at
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a program that performs simple operations.
 
@@ -153,3 +370,99 @@ Write a program that performs simple operations.
 -   if the user tries to divide (`/`  or  `%`) by  `0`, print  `Error`, followed by a new line, and exit with the status  `100`
 
 This task requires that you create four different files.
+
+**3-calc.h**
+
+This file should contain all the function prototypes and data structures used by the program. You can use this structure:
+
+```
+/**
+ * struct op - Struct op
+ *
+ * @op: The operator
+ * @f: The function associated
+ */
+typedef struct op
+{
+    char *op;
+    int (*f)(int a, int b);
+} op_t;
+
+```
+
+**3-op_functions.c**
+
+This file should contain the 5 following functions (not more):
+
+-   `op_add`: returns the sum of  `a`  and  `b`. Prototype:  `int op_add(int a, int b);`
+-   `op_sub`: returns the difference of  `a`  and  `b`. Prototype:  `int op_sub(int a, int b);`
+-   `op_mul`: returns the product of  `a`  and  `b`. Prototype:  `int op_mul(int a, int b);`
+-   `op_div`: returns the result of the division of  `a`  by  `b`. Prototype:  `int op_div(int a, int b);`
+-   `op_mod`: returns the remainder of the division of  `a`  by  `b`. Prototype:  `int op_mod(int a, int b);`
+
+**3-get_op_func.c**
+
+This file should contain the function that selects the correct function to perform the operation asked by the user. You’re not allowed to declare any other function.
+
+-   Prototype:  `int (*get_op_func(char *s))(int, int);`
+-   where  `s`  is the operator passed as argument to the program
+-   This function returns a pointer to the function that corresponds to the operator given as a parameter. Example:  `get_op_func("+")`  should return a pointer to the function  `op_add`
+-   You are not allowed to use  `switch`  statements
+-   You are not allowed to use  `for`  or  `do ... while`  loops
+-   You are not allowed to use  `goto`
+-   You are not allowed to use  `else`
+-   You are not allowed to use more than one  `if`  statement in your code
+-   You are not allowed to use more than one  `while`  loop in your code
+-   If  `s`  does not match any of the 5 expected operators (`+`,  `-`,  `*`,  `/`,  `%`), return  `NULL`
+-   You are only allowed to declare these two variables in this function:
+
+```
+    op_t ops[] = {
+        {"+", op_add},
+        {"-", op_sub},
+        {"*", op_mul},
+        {"/", op_div},
+        {"%", op_mod},
+        {NULL, NULL}
+    };
+    int i;
+
+```
+
+**3-main.c**
+
+This file should contain your  `main`  function only.
+
+-   You are not allowed to code any other function than  `main`  in this file
+-   You are not allowed to directly call  `op_add`,  `op_sub`,  `op_mul`,  `op_div`  or  `op_mod`  from the  `main`  function
+-   You have to use  `atoi`  to convert arguments to  `int`
+-   You are not allowed to use any kind of loop
+-   You are allowed to use a maximum of 3  `if`  statements
+
+**Compilation and examples**
+
+```
+julien@ubuntu:~/0x0e. Function pointers$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-main.c 3-op_functions.c 3-get_op_func.c -o calc
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1 + 1
+2
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 97 + 1
+98
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1024 / 10
+102
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1024 '*' 98
+100352
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1024 '\*' 98
+Error
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1024 - 98
+926
+julien@ubuntu:~/0x0e. Function pointers$ ./calc 1024 '%' 98
+44
+julien@ubuntu:~/0x0e. Function pointers$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x0F-function_pointers`
+-   File:  `3-main.c, 3-op_functions.c, 3-get_op_func.c, 3-calc.h`
