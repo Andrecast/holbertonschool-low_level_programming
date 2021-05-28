@@ -4,7 +4,8 @@
  * hash_table_get - Function that retrieves a value associated with a key.
  * @ht: hash table you want to look into
  * @key: the key you are looking for
- * Return: the value associated with the element, or NULL if key couldn’t be found
+ * Return: the value associated with the element,
+ * or NULL if key couldn’t be found
  */
 
 char *hash_table_get(const hash_table_t *ht, const char *key)
@@ -12,7 +13,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	hash_node_t *tmp = NULL;
 	unsigned long int index = 0;
 
-	if (!ht || ht->array == NULL || strlen(key) == 0 || !key || ht->size == 0)
+	if (!ht || strlen(key) == 0 || !key)
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, ht->size);
@@ -23,6 +24,5 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 			return (tmp->value);
 		tmp = tmp->next;
 	}
-
 	return (NULL);
 }
