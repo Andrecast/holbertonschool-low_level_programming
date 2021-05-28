@@ -53,11 +53,14 @@ At the end of this project, you are expected to be able to  [explain to anyone](
 
 **It is your responsibility to request a review for your blog from a peer before the project’s deadline. If no peers have been reviewed, you should request a review from a TA or staff member.**
 
+
 ## Tasks
 
 ### 0. A library is not a luxury but one of the necessities of life
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Create the dynamic library libholberton.so containing all the functions listed below:
 
@@ -154,13 +157,20 @@ julien@ubuntu:~/0x18. Dynamic libraries$ ./len
 julien@ubuntu:~/0x18. Dynamic libraries$ 
 
 ```
+
+**Repo:**
+
 -   GitHub repository:  `holbertonschool-low_level_programming`
 -   Directory:  `0x18-dynamic_libraries`
 -   File:  `libholberton.so, holberton.h`
 
+Done!  Help  Re-check your code  QA Review
+
 ### 1. Without libraries what have we? We have no past and no future
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Create a script that creates a dynamic library called  `liball.so`  from all the  `.c`  files that are in the current directory.
 
@@ -198,13 +208,20 @@ julien@ubuntu:~/0x18. Dynamic libraries$ nm -D --defined-only liball.so
 julien@ubuntu:~/0x18. Dynamic libraries$ 
 
 ```
+
+**Repo:**
+
 -   GitHub repository:  `holbertonschool-low_level_programming`
 -   Directory:  `0x18-dynamic_libraries`
 -   File:  `1-create_dynamic_lib.sh`
 
+Done!  Help  Re-check your code  QA Review
+
 ### 2. Either write something worth reading or do something worth writing
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a blog post describing the differences between static and dynamic libraries. It should cover:
 
@@ -221,9 +238,17 @@ When done, please add all urls below (blog post, LinkedIn post, etc.)
 
 Please, remember that these blogs must be written in English to further your technical ability in a variety of settings
 
+#### Add URLs here:
+
+-   [https://www.linkedin.com/pulse/differences-between-static-dynamic-libraries-how-do-andrea](https://www.linkedin.com/pulse/differences-between-static-dynamic-libraries-how-do-andrea)
+
+Done!  Help  QA Review
+
 ### 3. Let's call C functions from Python
 
 #advanced
+
+Score:  0.00%  (Checks completed: 0.00%)
 
 I know, you’re missing C when coding in Python. So let’s fix that!
 
@@ -269,13 +294,22 @@ julien@ubuntu:~/0x18$ python3 100-tests.py
 julien@ubuntu:~/0x18$ 
 
 ```
+
+**Repo:**
+
 -   GitHub repository:  `holbertonschool-low_level_programming`
 -   Directory:  `0x18-dynamic_libraries`
 -   File:  `100-operations.so`
 
+Done?  Help  Check your code  Ask a new correction  QA Review
+
 ### 4. Code injection: Win the Giga Millions!
 
 #advanced
+
+Score:  0.00%  (Checks completed: 0.00%)
+
+![](http://4.bp.blogspot.com/-9rqm8Pg1apY/UZHoC79xXtI/AAAAAAAACOs/0Fp4A4ipUqM/s320/tumblr_mlzp3qgHss1s5xo13o3_r1_1280.jpg)
 
 I bought a ticket for the Giga Millions and chose these numbers: 9, 8, 10, 24, 75 + 9. If you could run two commands on the same server where the Giga Millions program runs, could you make me win the Jackpot?
 
@@ -325,6 +359,7 @@ mss@gm_server$ exit
 
 Tip:  `LD_PRELOAD`
 
+**Repo:**
 
 -   GitHub repository:  `holbertonschool-low_level_programming`
 -   Directory:  `0x18-dynamic_libraries`
