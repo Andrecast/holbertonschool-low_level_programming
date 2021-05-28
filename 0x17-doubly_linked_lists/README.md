@@ -59,7 +59,23 @@ typedef struct dlistint_s
 
 ## Quiz questions
 
-Show
+
+#### Question #0
+
+In a doubly linked list, what are possible directions to traverse it? (select all possible answers)
+
+x   Forward
+    
+x   Backward
+    
+
+#### Question #1
+
+In a doubly linked list, what’s the “head” of a linked list?
+
+-   It’s the node with the pointer to the next equals to  `NULL`
+    
+x   It’s the node with the pointer to the previous equals to  `NULL`
 
 ## Tasks
 

@@ -24,7 +24,7 @@ What is  `0x89`  in base10?
     
 -   135
     
--   137
+x   137
     
 -   139
     
@@ -35,7 +35,7 @@ What is  `0x89`  in base2?
 
 -   0b10101001
     
--   0b10001001
+x   0b10001001
     
 -   0b01101001
     
@@ -48,7 +48,7 @@ What is  `0b001010010`  in base10?
 
 -   81
     
--   82
+x   82
     
 -   83
     
@@ -61,7 +61,7 @@ What is  `0b01101101`  in base16?
 
 -   0x36
     
--   0x6D
+x   0x6D
     
 -   0x6E
     
@@ -76,7 +76,7 @@ What is  `98`  in base2?
 
 -   0b01010010
     
--   0b01100010
+x   0b01100010
     
 -   0b10011000
     
@@ -85,7 +85,7 @@ What is  `98`  in base2?
 
 What is  `98`  in base16?
 
--   0x62
+x   0x62
     
 -   0x98
     
@@ -98,7 +98,7 @@ What is  `98`  in base16?
 
 -   `0x00`
     
--   `0x01`
+x   `0x01`
     
 -   `0x02`
     
@@ -109,7 +109,7 @@ What is  `98`  in base16?
 
 -   `0x00`
     
--   `0x01`
+x   `0x01`
     
 -   `0x02`
     
@@ -118,7 +118,7 @@ What is  `98`  in base16?
 
 `0x01 & 0x00 =`  ?
 
--   `0x00`
+x   `0x00`
     
 -   `0x01`
     
@@ -131,7 +131,7 @@ What is  `98`  in base16?
 
 -   `0x00`
     
--   `0x01`
+x   `0x01`
     
 -   `0x02`
     
@@ -140,7 +140,7 @@ What is  `98`  in base16?
 
 `0x66 & 0x22 =`  ?
 
--   `0x22`
+x   `0x22`
     
 -   `0x44`
     
@@ -155,7 +155,7 @@ What is  `98`  in base16?
     
 -   `0x44`
     
--   `0x66`
+x   `0x66`
     
 
 #### Question #12
@@ -164,7 +164,7 @@ What is  `98`  in base16?
 
 -   `0x00`
     
--   `0x01`
+x   `0x01`
     
 -   `0x88`
     
@@ -175,7 +175,7 @@ What is  `98`  in base16?
 
 `0x88 & 0x01 =`  ?
 
--   `0x00`
+x   `0x00`
     
 -   `0x01`
     
@@ -190,7 +190,7 @@ What is  `98`  in base16?
 
 -   0x02
     
--   0x01
+x   0x01
     
 -   0x00
     
@@ -205,7 +205,7 @@ What is  `98`  in base16?
     
 -   0x22
     
--   0x11
+x   0x11
     
 -   0x08
     
@@ -218,7 +218,7 @@ What is  `98`  in base16?
     
 -   0x01
     
--   0x02
+x   0x02
     
 -   0x03
     
@@ -231,7 +231,7 @@ What is  `98`  in base16?
 
 -   0x13
     
--   0x26
+x   0x26
     
 -   0x4C
     
@@ -242,7 +242,7 @@ What is  `98`  in base16?
 
 `~ 0x12 =`  ?
 
--   0xED
+x   0xED
     
 -   0xFD
     
@@ -257,16 +257,19 @@ What is  `98`  in base16?
 
 -   0x66
     
--   0x67
+x   0x67
     
 -   0x68
     
+
 
 ## Tasks
 
 ### 0. 0
 
 mandatory
+
+Score:  65.00%  (Checks completed: 100.00%)
 
 Write a function that converts a binary number to an  `unsigned int`.
 
@@ -276,9 +279,56 @@ Write a function that converts a binary number to an  `unsigned int`.
     -   there is one or more chars in the string  `b`  that is not  `0`  or  `1`
     -   `b`  is  `NULL`
 
+```
+julien@ubuntu:~/0x14. Binary$ cat 0-main.c
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    unsigned int n;
+
+    n = binary_to_uint("1");
+    printf("%u\n", n);
+    n = binary_to_uint("101");
+    printf("%u\n", n);
+    n = binary_to_uint("1e01");
+    printf("%u\n", n);
+    n = binary_to_uint("1100010");
+    printf("%u\n", n);
+    n = binary_to_uint("0000000000000000000110010010");
+    printf("%u\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 0-main.c 0-binary_to_uint.c -o a
+julien@ubuntu:~/0x14. Binary$ ./a 
+1
+5
+0
+98
+402
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `0-binary_to_uint.c`
+
+Done!  Help  Check your code  Get a sandbox  QA Review
+
 ### 1. 1
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that prints the binary representation of a number.
 
@@ -288,9 +338,54 @@ Write a function that prints the binary representation of a number.
 -   You are not allowed to use  `malloc`
 -   You are not allowed to use the  `%`  or  `/`  operators
 
+```
+julien@ubuntu:~/0x14. Binary$ cat 1-main.c 
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_binary(0);
+    printf("\n");
+    print_binary(1);
+    printf("\n");
+    print_binary(98);
+    printf("\n");
+    print_binary(1024);
+    printf("\n");
+    print_binary((1 << 10) + 1);
+    printf("\n");
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-main.c 1-print_binary.c _putchar.c -o b
+julien@ubuntu:~/0x14. Binary$ ./b 
+0
+1
+1100010
+10000000000
+10000000001
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `1-print_binary.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 2. 10
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that returns the value of a bit at a given index.
 
@@ -298,9 +393,50 @@ Write a function that returns the value of a bit at a given index.
 -   where  `index`  is the index, starting from  `0`  of the bit you want to get
 -   Returns: the value of the bit at index  `index`  or  `-1`  if an error occured
 
+```
+julien@ubuntu:~/0x14. Binary$ cat 2-main.c
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int n;
+
+    n = get_bit(1024, 10);
+    printf("%d\n", n);
+    n = get_bit(98, 1);
+    printf("%d\n", n);
+    n = get_bit(1024, 0);
+    printf("%d\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-get_bit.c -o c  
+julien@ubuntu:~/0x14. Binary$ ./c
+1
+1
+0
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `2-get_bit.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 3. 11
 
 mandatory
+
+Score:  65.00%  (Checks completed: 100.00%)
 
 Write a function that sets the value of a bit to  `1`  at a given index.
 
@@ -308,9 +444,53 @@ Write a function that sets the value of a bit to  `1`  at a given index.
 -   where  `index`  is the index, starting from  `0`  of the bit you want to set
 -   Returns:  `1`  if it worked, or  `-1`  if an error occurred
 
+```
+julien@ubuntu:~/0x14. Binary$ cat 3-main.c
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    unsigned long int n;
+
+    n = 1024;
+    set_bit(&n, 5);
+    printf("%lu\n", n);
+    n = 0;
+    set_bit(&n, 10);
+    printf("%lu\n", n);
+    n = 98;
+    set_bit(&n, 0);
+    printf("%lu\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-main.c 3-set_bit.c -o d
+julien@ubuntu:~/0x14. Binary$ ./d
+1056
+1024
+99
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `3-set_bit.c`
+
+Done!  Help  Check your code  Get a sandbox  QA Review
+
 ### 4. 100
 
 mandatory
+
+Score:  65.00%  (Checks completed: 100.00%)
 
 Write a function that sets the value of a bit to  `0`  at a given index.
 
@@ -318,11 +498,95 @@ Write a function that sets the value of a bit to  `0`  at a given index.
 -   where  `index`  is the index, starting from  `0`  of the bit you want to set
 -   Returns:  `1`  if it worked, or  `-1`  if an error occurred
 
+```
+julien@ubuntu:~/0x14. Binary$ cat 4-main.c
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    unsigned long int n;
+
+    n = 1024;
+    clear_bit(&n, 10);
+    printf("%lu\n", n);
+    n = 0;
+    clear_bit(&n, 10);
+    printf("%lu\n", n);
+    n = 98;
+    clear_bit(&n, 1);
+    printf("%lu\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 4-main.c 4-clear_bit.c -o e
+julien@ubuntu:~/0x14. Binary$ ./e
+0
+0
+96
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `4-clear_bit.c`
+
+Done!  Help  Check your code  Get a sandbox  QA Review
+
 ### 5. 101
 
 mandatory
+
+Score:  65.00%  (Checks completed: 100.00%)
 
 Write a function that returns the number of bits you would need to flip to get from one number to another.
 
 -   Prototype:  `unsigned int flip_bits(unsigned long int n, unsigned long int m);`
 -   You are not allowed to use the  `%`  or  `/`  operators
+
+```
+julien@ubuntu:~/0x14. Binary$ cat 5-main.c
+#include <stdio.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    unsigned int n;
+
+    n = flip_bits(1024, 1);
+    printf("%u\n", n);
+    n = flip_bits(402, 98);
+    printf("%u\n", n);
+    n = flip_bits(1024, 3);
+    printf("%u\n", n);
+    n = flip_bits(1024, 1025);
+    printf("%u\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x14. Binary$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 5-main.c 5-flip_bits.c -o f
+julien@ubuntu:~/0x14. Binary$ ./f
+2
+5
+3
+1
+julien@ubuntu:~/0x14. Binary$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x14-bit_manipulation`
+-   File:  `5-flip_bits.c`
