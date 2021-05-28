@@ -37,7 +37,7 @@ Hide
 
 What is the  `unistd`  symbolic constant for the standard input?
 
--   STDIN_FILENO
+x   STDIN_FILENO
     
 -   STDOUT_FILENO
     
@@ -50,7 +50,7 @@ What is the  `unistd`  symbolic constant for the standard output?
 
 -   STDIN_FILENO
     
--   STDOUT_FILENO
+x   STDOUT_FILENO
     
 -   STDERR_FILENO
     
@@ -63,7 +63,7 @@ What is the  `unistd`  symbolic constant for the Standard error?
     
 -   STDOUT_FILENO
     
--   STDERR_FILENO
+x   STDERR_FILENO
     
 
 #### Question #3
@@ -72,7 +72,7 @@ What is the  `oflag`  used to open a file with the mode read only?
 
 -   `O_WRONLY`
     
--   `O_RDONLY`
+x   `O_RDONLY`
     
 -   `O_RDWR`
     
@@ -85,7 +85,7 @@ What is the  `oflag`  used to open a file in mode read + write?
     
 -   `O_RDONLY`
     
--   `O_RDWR`
+x   `O_RDWR`
     
 
 #### Question #5
@@ -96,7 +96,7 @@ What is the correct combination of  `oflag`s used to open a file with the mode w
     
 -   `O_WRONLY | O_CREAT | O_EXCL`
     
--   `O_WRONLY | O_CREAT | O_APPEND`
+x   `O_WRONLY | O_CREAT | O_APPEND`
     
 -   `O_RDWR | O_CREAT | O_APPEND`
     
@@ -105,13 +105,13 @@ What is the correct combination of  `oflag`s used to open a file with the mode w
 
 is  `open`  a function or a system call? (select all valid answers)
 
--   it’s a function
+x   it’s a function
     
--   it’s a system call
+x   it’s a system call
     
 -   it’s a library call
     
--   it’s a function provided by the kernel
+x   it’s a function provided by the kernel
     
 -   it’s a kernel routine
     
@@ -124,16 +124,16 @@ What system call would you use to write to a file descriptor? (select all correc
     
 -   fprintf
     
--   write
+x   write
     
 
 #### Question #8
 
 Without context, on Ubuntu 14.04 LTS,  `write`  is a … (please select all correct answers):
 
--   executable
+x   executable
     
--   system call
+x   system call
     
 -   library call
     
@@ -148,7 +148,7 @@ What is the return value of the system call  `open`  if it fails?
 
 -   0
     
--   -1
+x   -1
     
 -   98
     
@@ -163,7 +163,7 @@ Most of the time, on a classic, modern Linux system, what will be the value of t
     
 -   2
     
--   3
+x   3
     
 -   4
     
@@ -184,7 +184,7 @@ why? #AlwaysAskWhy
     
 -   Because this will be the third opened file descriptor for my process
     
--   Because most of the time, I will already have  `stdin`  (value 0),  `stdout`  (value  `1`) and  `stderr`  (value 2) opened when my program starts executing.
+x   Because most of the time, I will already have  `stdin`  (value 0),  `stdout`  (value  `1`) and  `stderr`  (value 2) opened when my program starts executing.
     
 -   I don’t care I never ask why, just let me access the tasks!
     
@@ -197,13 +197,13 @@ Which of these answers are the equivalent of  `O_RDWR`  on Ubuntu 14.04 LTS? (se
     
 -   1
     
--   2
+x   2
     
 -   3
     
--   1 << 1
+x   1 << 1
     
--   3 & 2
+x   3 & 2
     
 -   3 | 2
     
@@ -219,7 +219,7 @@ Which of these answers are the equivalent of  `O_RDWR`  on Ubuntu 14.04 LTS? (se
     
 -   (O_RDONLY << 1)
     
--   (O_WRONLY << 1)
+x   (O_WRONLY << 1)
     
 -   0
     
@@ -238,7 +238,7 @@ What happens if you try to write “Holberton” to the standard  **input**  on 
     
 -   The text will be printed on the terminal but I can’t pipe it
     
--   The text will be printed on the terminal on the standard output
+x   The text will be printed on the terminal on the standard output
     
 
 #### Tips:
@@ -249,16 +249,19 @@ Just try it! :)
 
 When I am using  `O_WRONLY | O_CREAT | O_APPEND`  -> the  `|`  are bitwise operators.
 
--   True
+x   True
     
 -   False
     
+
 
 ## Tasks
 
 ### 0. Tread lightly, she is near
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that reads a text file and prints it to the  `POSIX`  standard output.
 
@@ -268,9 +271,117 @@ Write a function that reads a text file and prints it to the  `POSIX`  standard 
 -   if the file can not be opened or read, return  `0`
 -   if  `filename`  is  `NULL`  return  `0`
 -   if  `write`  fails or does not write the expected amount of bytes, return  `0`
+
+```
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat Requiescat 
+Requiescat
+by Oscar Wilde
+
+Tread lightly, she is near
+Under the snow,
+Speak gently, she can hear
+The daisies grow.
+
+All her bright golden hair
+Tarnished with rust,
+She that was young and fair
+Fallen to dust.
+
+Lily-like, white as snow,
+She hardly knew
+She was a woman, so
+Sweetly she grew.
+
+Coffin-board, heavy stone,
+Lie on her breast,
+I vex my heart alone,
+She is at rest.
+
+Peace, Peace, she cannot hear
+Lyre or sonnet,
+All my life's buried here,
+Heap earth upon it.
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat 0-main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(int ac, char **av)
+{
+    ssize_t n;
+
+    if (ac != 2)
+    {
+        dprintf(2, "Usage: %s filename\n", av[0]);
+        exit(1);
+    }
+    n = read_textfile(av[1], 114);
+    printf("\n(printed chars: %li)\n", n);
+    n = read_textfile(av[1], 1024);
+    printf("\n(printed chars: %li)\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x15. File descriptors and permissions$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 0-main.c 0-read_textfile.c -o a
+julien@ubuntu:~/0x15. File descriptors and permissions$ ./a Requiescat 
+Requiescat
+by Oscar Wilde
+
+Tread lightly, she is near
+Under the snow,
+Speak gently, she can hear
+The daisies grow.
+(printed chars: 114)
+Requiescat
+by Oscar Wilde
+
+Tread lightly, she is near
+Under the snow,
+Speak gently, she can hear
+The daisies grow.
+
+All her bright golden hair
+Tarnished with rust,
+She that was young and fair
+Fallen to dust.
+
+Lily-like, white as snow,
+She hardly knew
+She was a woman, so
+Sweetly she grew.
+
+Coffin-board, heavy stone,
+Lie on her breast,
+I vex my heart alone,
+She is at rest.
+
+Peace, Peace, she cannot hear
+Lyre or sonnet,
+All my life's buried here,
+Heap earth upon it.
+
+(printed chars: 468)
+julien@ubuntu:~/0x15. File descriptors and permissions$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x15-file_io`
+-   File:  `0-read_textfile.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 1. Under the snow
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Create a function that creates a file.
 
@@ -281,9 +392,54 @@ Create a function that creates a file.
 -   if the file already exists, truncate it
 -   if  `filename`  is  `NULL`  return  `-1`
 -   if  `text_content`  is  `NULL`  create an empty file
+
+```
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat 1-main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(int ac, char **av)
+{
+    int res;
+
+    if (ac != 3)
+    {
+        dprintf(2, "Usage: %s filename text\n", av[0]);
+        exit(1);
+    }
+    res = create_file(av[1], av[2]);
+    printf("-> %i)\n", res);
+    return (0);
+}
+julien@ubuntu:~/0x15. File descriptors and permissions$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-main.c 1-create_file.c -o b
+julien@ubuntu:~/0x15. File descriptors and permissions$ ./b hello world
+-> 1)
+julien@ubuntu:~/0x15. File descriptors and permissions$ ls -l hello
+-rw------- 1 julien julien 5 Dec  3 14:28 hello
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat hello 
+worldjulien@ubuntu:~/0x15. File descriptors and permis$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x15-file_io`
+-   File:  `1-create_file.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 2. Speak gently, she can hear
 
 mandatory
+
+Score:  100.00%  (Checks completed: 100.00%)
 
 Write a function that appends text at the end of a file.
 
@@ -293,9 +449,57 @@ Write a function that appends text at the end of a file.
 -   Do not create the file if it does not exist
 -   If  `filename`  is  `NULL`  return  `-1`
 -   If  `text_content`  is  `NULL`, do not add anything to the file. Return  `1`  if the file exists and  `-1`  if the file does not exist or if you do not have the required permissions to write the file
+
+```
+julien@ubuntu:~/c/curriculum_by_julien/holbertonschool-low_level_programming/0x15. File descriptors and permissions$ cat 2-main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "holberton.h"
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(int ac, char **av)
+{
+    int res;
+
+    if (ac != 3)
+    {
+        dprintf(2, "Usage: %s filename text\n", av[0]);
+        exit(1);
+    }
+    res = append_text_to_file(av[1], av[2]);
+    printf("-> %i)\n", res);
+    return (0);
+}
+julien@ubuntu:~/0x15. File descriptors and permissions$ echo -n Hello > hello
+julien@ubuntu:~/0x15. File descriptors and permissions$ ls -l hello
+-rw-rw-r-- 1 julien julien 5 Dec  3 14:48 hello
+julien@ubuntu:~/0x15. File descriptors and permissions$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-append_text_to_file.c -o c
+julien@ubuntu:~/0x15. File descriptors and permissions$ ./c hello " World!
+> "
+-> 1)
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat hello 
+Hello World!
+julien@ubuntu:~/0x15. File descriptors and permissions$
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x15-file_io`
+-   File:  `2-append_text_to_file.c`
+
+Done!  Help  Re-check your code  Get a sandbox  QA Review
+
 ### 3. cp
 
 mandatory
+
+Score:  0.00%  (Checks completed: 0.00%)
 
 Write a program that copies the content of a file to another file.
 
@@ -311,3 +515,28 @@ Write a program that copies the content of a file to another file.
 -   Permissions of the created file:  `rw-rw-r--`. If the file already exists, do not change the permissions
 -   You must read  `1,024`  bytes at a time from the  `file_from`  to make less system calls. Use a buffer
 -   You are allowed to use  `dprintf`
+
+```
+julien@ubuntu:~/0x15. File descriptors and permissions$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-cp.c -o cp
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat incitatous 
+Why you should think twice before putting pictures on social media.
+(What you always wanted to know about @Incitatous)
+#PrivacyAware
+http://imgur.com/a/Mq1tc
+julien@ubuntu:~/0x15. File descriptors and permissions$ ./cp incitatous Incitatous
+julien@ubuntu:~/0x15. File descriptors and permissions$ ls -l Incitatous 
+-rw-rw-r-- 1 julien julien 158 Dec  3 15:39 Incitatous
+julien@ubuntu:~/0x15. File descriptors and permissions$ cat Incitatous 
+Why you should think twice before putting pictures on social media.
+(What you always wanted to know about @Incitatous)
+#PrivacyAware
+http://imgur.com/a/Mq1tc
+julien@ubuntu:~/0x15. File descriptors and permissions$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-low_level_programming`
+-   Directory:  `0x15-file_io`
+-   File:  `3-cp.c`
