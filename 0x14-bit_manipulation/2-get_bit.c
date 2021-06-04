@@ -12,5 +12,6 @@ int get_bit(unsigned long int n, unsigned int index)
 	if (index > 31) /* si son mas de 32 bits*/
 		return (-1);
 	number = n >> index;
+	
 	return (number & 1);
 }
