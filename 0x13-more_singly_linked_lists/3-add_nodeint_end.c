@@ -23,7 +23,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 		final = *head;
 		while (final->next != NULL)/*Mientras no sea el último*/
 		{
-			final = final->next;/*mandelo despúes*/
+			final = final->next;/**/
 		}
 		final->next = new;  /*new va a la cola*/
 	}
