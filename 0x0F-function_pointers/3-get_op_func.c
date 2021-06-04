@@ -26,9 +26,9 @@ int (*get_op_func(char *s))(int, int)
 	j = 0;
 	while (ops[j].op != NULL)
 	{
-		if (strcmp(s, ops[j].op) == 0)
+		if (strcmp(s, ops[j].op) == 0)/*strcmp cuando compara y los dos argumentos son totalmente iguales retorna 0*/
 		{
-			return (ops[j].f);
+			return (ops[j].f);/*returns a pointer to the function that corresponds to the operator given as a parameter*/
 		}
 		j++;
 	}

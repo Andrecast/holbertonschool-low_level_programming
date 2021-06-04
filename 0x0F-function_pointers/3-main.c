@@ -12,7 +12,7 @@ int main(int ac, char *av[])
 	int i, j, result;
 	int (*p)(int a, int b);
 
-	if (ac > 4 || ac < 4)
+	if (ac != 4)
 	{
 		printf("Error\n");
 		exit(98);
@@ -25,12 +25,15 @@ int main(int ac, char *av[])
 	}
 	i = atoi(av[1]);
 	j = atoi(av[3]);
-	result = (*p)(i, j);
-	if (result == -1)
+	if (*av[2] == '/' || *av[2] == '%')
 	{
-		printf("Error\n");
-		exit(100);
+		if (j == 0)
+		{
+			printf("Error\n");
+			exit(100);
+		}
 	}
+	result = (*get_op_func(av[2]))(i, j);
 	printf("%d\n", result);
 	return (0);
 }
