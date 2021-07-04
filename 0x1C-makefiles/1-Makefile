@@ -1,7 +1,6 @@
 CC = gcc
 SRC = holberton.c main.c
-all: holberton
-holberton: main.c holberton.c	
+all: $(SRC)	
 		$(CC) $(SRC) -o holberton 
 # sería lo mismo que tener: gcc main.c holberton.c -o holberton
 1
