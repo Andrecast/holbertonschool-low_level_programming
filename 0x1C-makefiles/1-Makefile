@@ -3,4 +3,3 @@ SRC = holberton.c main.c
 all: $(SRC)	
 		$(CC) $(SRC) -o holberton 
 # sería lo mismo que tener: gcc main.c holberton.c -o holberton
-1
