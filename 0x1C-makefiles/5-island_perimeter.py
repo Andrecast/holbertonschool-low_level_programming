@@ -9,8 +9,8 @@ def island_perimeter(grid):
     width = len(grid[0]) - 1
 
     for i, j in enumerate(grid):
-        for k, n in enumerate(r):
-            if n == 1:
+        for k, l in enumerate(j):
+            if l == 1:
                 if i == 0 or grid[i - 1][k] != 1:
                     count += 1
                 if k == 0 or grid[i][k - 1] != 1:
